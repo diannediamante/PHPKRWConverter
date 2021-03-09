@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<title>Annyeong!</title>
+	<head>
+		<style>
+			body {
+			  background-color: #296d98;
+			  font-family: TimesNewRoman;
+			}
+
+			.container {
+				position: relative;
+				text-align: center;
+				color: white;
+			}
+
+			/*viewport width*/
+			.header {
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 3vw;
+			}
+
+			.php {
+				font-size: 1vw;
+			}
+
+			.krw {
+				font-size: 1vw;
+			}
+
+			.button1 {
+				font-size: 1vw;
+			}
+		</style>
+	</head>
+
+	<body onload="myFunction()">
+		<div class="container">
+			<img src="https://www.executivecentre.com/wp-content/uploads/sites/43/2018/07/blog-header.jpg" alt="PHP TO KRW CONVERTER" style="width:60%;">
+			<div class="header">
+				PHP TO KRW CONVERTER
+			</div>
+			<div class="converter">
+				<br><br>
+				<label for="php">PHP</label><br>
+				<input type="text" id="php" name="php" value="" data-type="currency" placeholder="₱0.00"><br><br>
+				
+				<label for="krw">KRW</label><br>
+				<input type="text" id="krw" name="krw" value="" data-type="currency" placeholder="₩0.00"><br><br>
+				
+				<button onclick="required()" class="button button1">Convert</button>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	function myFunction() {
+		document.getElementById("php").value = "";
+		document.getElementById("krw").value = "";
+	}
+
+	function required() {
+		var emptPHP = document.getElementById("php").value;
+		var emptKRW = document.getElementById("krw").value;
+
+		if (emptPHP == "" && emptKRW == ""){
+			alert("Please input a value in one field!");
+			return false;
+		}
+		else if (emptPHP != "" && emptKRW != ""){
+			alert("Please input a value in one field only!");
+			return false;
+		}
+		else{
+			if (emptPHP != ""){
+				//peso to krw
+				if (!isNaN(emptPHP)){
+					document.getElementById("krw").value = "₩" + (emptPHP * 23.22).toFixed(2);
+					document.getElementById("php").value = "₱" + (Number(document.getElementById("php").value)).toFixed(2);
+				}
+				else{
+					alert("Please enter a valid amount for PHP without the ₱ sign!");
+					return false;
+				}
+			}
+			else{
+				//krw to peso
+				if (!isNaN(emptKRW)){
+					document.getElementById("php").value = "₱" + (emptKRW * 0.043).toFixed(2);
+					document.getElementById("krw").value = "₩" + (Number(document.getElementById("krw").value)).toFixed(2);
+				}
+				else{
+					alert("Please enter a valid amount for KRW without the ₩ sign!");
+					return false;
+				}
+			}
+		}
+	}
+</script>
