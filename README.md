@@ -26,5 +26,5 @@
    * Commas can be added as separators to make bigger values easy to read
    * Codes for HTML, CSS, and JS can be separated into different files to make the JS and CSS files useful to other HTML files especially the JS functions
 
-> Date Created: March 03, 2021
+> Date Created: March 03, 2021 || Purpose: Tutorial
 
